@@ -35,6 +35,7 @@ alias youtube='yt-dlp -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/be
 alias sleepstatus='pmset -g | awk "/SleepDisabled/{print $2}"'
 alias sleeprecord='pmset -g log | grep -e "Clamshell Sleep" -e " Wake  " | tail -n '
 alias stayup='caffeinate -d -t '
-alias fsizes='du -sh ./*'
+alias fsizes='du -sh ./* | sort -h'
 alias la='ls -la'
 alias folder-copy='sudo ~/Documents/Scripts/folder-copy.sh'
+alias spank='sudo ~/Documents/Scripts/spank_1.2.5_darwin_arm64/spank'
