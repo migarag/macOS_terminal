@@ -1,0 +1,14 @@
+[user]
+	name = migarag
+	email = migara3006@gmail.com
+[core]
+	editor = vim
+	excludesfile = /Users/migaragunawansha/.gitignore_global
+[color]
+	ui = true
+[credential]
+	helper = osxkeychain
+[init]
+	defaultBranch = main
+[pull]
+	rebase = false
