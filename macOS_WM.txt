@@ -1,0 +1,174 @@
+Native macOS Spaces + yabai + skhd Setup Guide
+
+This setup keeps the native macOS Spaces workflow while adding Linux/i3-style keyboard shortcuts for:
+
+* Moving windows between Spaces
+* Automatically switching to the target Space
+* Focusing Spaces directly via keyboard shortcuts
+
+This guide reflects the final working configuration.
+
+⸻
+
+1. Important macOS Settings
+
+Open:
+
+System Settings → Desktop & Dock
+
+Enable:
+
+* Displays have separate Spaces
+
+This was required for yabai Space management to function correctly in this setup.
+
+Disable:
+
+* Automatically rearrange Spaces based on most recent use
+
+This keeps Space numbering stable.
+
+⸻
+
+2. Install yabai
+
+Install:
+
+brew install koekeishiya/formulae/yabai
+
+Start the service:
+
+yabai --start-service
+
+Grant Accessibility permissions when macOS prompts you.
+
+You may need to manually enable yabai under:
+
+System Settings → Privacy & Security → Accessibility
+
+⸻
+
+3. Verify yabai is Running
+
+Test with:
+
+yabai -m query --spaces
+
+If working, yabai will output JSON describing all Spaces.
+
+⸻
+
+4. Install skhd
+
+Install:
+
+brew install koekeishiya/formulae/skhd
+
+Start the service:
+
+skhd --start-service
+
+⸻
+
+5. Create skhd Config
+
+Create the config file:
+
+nano ~/.skhdrc
+
+⸻
+
+6. Final Working Keybind Configuration
+
+Paste the following:
+
+# Move focused window to a Space and follow it
+ctrl + alt - 1 : yabai -m window --space 1; yabai -m space --focus 1
+ctrl + alt - 2 : yabai -m window --space 2; yabai -m space --focus 2
+ctrl + alt - 3 : yabai -m window --space 3; yabai -m space --focus 3
+ctrl + alt - 4 : yabai -m window --space 4; yabai -m space --focus 4
+ctrl + alt - 5 : yabai -m window --space 5; yabai -m space --focus 5
+ctrl + alt - 6 : yabai -m window --space 6; yabai -m space --focus 6
+# Focus Spaces only
+ctrl + shift - 1 : yabai -m space --focus 1
+ctrl + shift - 2 : yabai -m space --focus 2
+ctrl + shift - 3 : yabai -m space --focus 3
+ctrl + shift - 4 : yabai -m space --focus 4
+ctrl + shift - 5 : yabai -m space --focus 5
+ctrl + shift - 6 : yabai -m space --focus 6
+
+⸻
+
+7. Reload skhd
+
+After editing the config:
+
+skhd --reload
+
+⸻
+
+8. Resulting Workflow
+
+Move Window + Follow
+
+Example:
+
+ctrl + alt + 4
+
+This:
+
+1. Moves the focused window to Space 4
+2. Instantly switches you to Space 4
+
+⸻
+
+Focus Space Only
+
+Example:
+
+ctrl + shift + 4
+
+This:
+
+1. Leaves all windows where they are
+2. Simply switches you to Space 4
+
+⸻
+
+9. Useful yabai Commands
+
+Query all Spaces
+
+yabai -m query --spaces
+
+Move focused window manually
+
+yabai -m window --space 4
+
+Focus a Space manually
+
+yabai -m space --focus 4
+
+⸻
+
+10. Notes
+
+* SIP disabling was NOT required for this workflow.
+* Native macOS fullscreen behavior can still be used.
+* Mission Control remains fully functional.
+* This setup effectively creates Linux-style workspace management while preserving the native macOS Spaces experience.
+
+⸻
+
+Final Result
+
+The resulting setup provides:
+
+* Native macOS Spaces
+* Keyboard-driven workspace management
+* Instant window movement between Spaces
+* Automatic follow-to-space behavior
+* Stable numbered workspaces
+* No full tiling WM required
+
+A very clean hybrid macOS/Linux workflow.
