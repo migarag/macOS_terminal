@@ -40,6 +40,12 @@ Start the service:
 
 yabai --start-service
 
+might need to manually run yabai with
+/opt/homebrew/bin/yabai
+
+Ensure yabai is running with
+pgrep -laf yabai
+
 Grant Accessibility permissions when macOS prompts you.
 
 You may need to manually enable yabai under:
